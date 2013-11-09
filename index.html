@@ -12,6 +12,20 @@
 
         <script src="js/modernizr.js"></script>
         <script src="js/jquery.flexslider.js"></script>      	
+        <script>
+          var x=document.getElementById("geolocation");
+
+          function getLocation(){
+            if (navigator.geolocation){
+              navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else{x.innerHTML="Geolocation is not supported by this browser.";}
+            }
+
+          function showPosition(position) {
+              x.innerHTML="Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+          }
+        </script>
 		
   </head>
         
@@ -49,9 +63,10 @@
       });            
         </script>  
           	<a href="#page2" data-role="button" data-icon="home" data-transition="pop" data-rel="dialog">Presionalo</a>   
+            <a href="#page3" data-role="button" data-transition="Slide">Geolocation</a>   
             
           </div>
-          <div data-role="footer" data-position="fixed">
+          <div data-role="footer" data-position="fixed" data-id="pie">
             <h4>Pie</h4>
           </div>
     </div>
@@ -63,13 +78,15 @@
             <div data-role="content">            
                 Hola
             </div>
-    </div>      
-        
-   
-    
-   
-        
-        
+    </div>
 
+    <div data-role="page" id="page3">
+      <div data-role="content">
+      		<p id="geolocation">Buscando</p>      
+      </div>
+      <div data-role="footer" data-id="pie">
+        <h4>Geolocation</h4>
+      </div>
+    </div>   
     </body>
 </html>
